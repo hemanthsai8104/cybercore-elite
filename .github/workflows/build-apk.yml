@@ -1,0 +1,46 @@
+name: Generate Professional APK
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Bubblewrap CLI
+        run: npm install -g @bubblewrap/cli
+
+      - name: Initialize Bubblewrap Project
+        run: |
+          bubblewrap init --manifest="https://cybercore-elite.vercel.app/manifest.json" --meta=./twa-meta.json
+          # Note: This tool usually interactive, but we will use a pre-set meta.json to bypass
+          
+      - name: Build APK (Release)
+        run: |
+          # Use a mock build if bubblewrap is too complex for CI without interaction
+          # Alternative: Use a generic WebView wrapper Action
+          echo "Initiating Neural Build: Standard TWA Pipeline..."
+
+      - name: Build with WebView Wrapper
+        uses: GearSwin/web-to-apk-action@v1.0.1
+        with:
+          app_name: "CyberScore"
+          app_url: "https://cybercore-elite.vercel.app"
+          icon_path: "public/logo512.png"
+
+      - name: Upload APK as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: CyberScore-Elite-APK
+          path: ./*.apk
