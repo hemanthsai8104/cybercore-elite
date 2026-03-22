@@ -13,7 +13,7 @@ const secret = process.env.JWT_SECRET || 'cyber_safe_key_88';
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, '..')));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../index.html'));
