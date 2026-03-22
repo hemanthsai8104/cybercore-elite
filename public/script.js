@@ -5,8 +5,7 @@ let trendChart, distChart, categoryChart, radarChart;
 let editingVaultId = null;
 
 // NETWORK IDENTITY (Relative for PC, IP for APK)
-const API_URL = ''; 
-
+const API_URL = '/api'; // THE 100% VERCEL CLOUD BRIDGE
 document.body.className = currentTheme;
 
 window.onload = function() {
