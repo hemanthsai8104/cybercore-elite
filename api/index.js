@@ -13,6 +13,13 @@ const secret = process.env.JWT_SECRET || 'cyber_safe_key_88';
 
 app.use(express.json());
 app.use(cors());
+
+// --- IDENTITY BRIDGE: Strip /api prefix for Vercel routing ---
+app.use((req, res, next) => {
+    if (req.url.startsWith('/api')) { req.url = req.url.replace('/api', ''); }
+    next();
+});
+
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // --- IMPERIAL ASSET BYPASS (Fixes Vercel 404/MIME Errors) ---
