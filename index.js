@@ -15,6 +15,10 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static(__dirname));
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 // --- DYNAMIC INTELLIGENCE ENGINE ---
 function generateForensicFeedback(appName, score, answers) {
     const isCritical = score < 50;
