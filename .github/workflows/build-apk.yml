@@ -13,29 +13,16 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Setup JDK
+        uses: actions/setup-java@v3
         with:
-          node-version: 18
-
-      - name: Install Bubblewrap CLI
-        run: npm install -g @bubblewrap/cli
-
-      - name: Initialize Bubblewrap Project
-        run: |
-          bubblewrap init --manifest="https://cybercore-elite.vercel.app/manifest.json" --meta=./twa-meta.json
-          # Note: This tool usually interactive, but we will use a pre-set meta.json to bypass
-          
-      - name: Build APK (Release)
-        run: |
-          # Use a mock build if bubblewrap is too complex for CI without interaction
-          # Alternative: Use a generic WebView wrapper Action
-          echo "Initiating Neural Build: Standard TWA Pipeline..."
+          java-version: '11'
+          distribution: 'adopt'
 
       - name: Build with WebView Wrapper
-        uses: GearSwin/web-to-apk-action@v1.0.1
+        uses: GearSwin/web-to-apk-action@v1.1.0
         with:
-          app_name: "CyberScore"
+          app_name: "CyberScore Elite"
           app_url: "https://cybercore-elite.vercel.app"
           icon_path: "public/logo512.png"
 
