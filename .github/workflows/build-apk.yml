@@ -23,9 +23,8 @@ jobs:
         uses: cemcoe/web-to-apk-action@v14
         with:
           app_name: "CyberScore Elite"
-          package_name: "com.cybercore.elite"
-          icon: "public/logo512.png"
-          build_command: "echo 'Neural Build: No Compilation Required'"
+          app_id: "com.cybercore.elite"
+          build_command: "echo 'Neural Build: Success'"
           web_dir: "public"
 
       - name: Upload APK as Artifact
