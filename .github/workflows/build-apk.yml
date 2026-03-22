@@ -13,12 +13,20 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
       - name: Build Android APK
-        uses: darkshredder/web-to-app-action@main
+        uses: cemcoe/web-to-apk-action@v14
         with:
           app_name: "CyberScore Elite"
-          app_url: "https://cybercore-elite.vercel.app"
-          icon_url: "https://raw.githubusercontent.com/hemanthsai8104/cybercore-elite/main/public/logo512.png"
+          package_name: "com.cybercore.elite"
+          icon: "public/logo512.png"
+          build_command: "echo 'Neural Build: No Compilation Required'"
+          web_dir: "public"
 
       - name: Upload APK as Artifact
         uses: actions/upload-artifact@v4
