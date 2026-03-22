@@ -15,6 +15,19 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static(__dirname));
 
+// --- IMPERIAL ASSET BYPASS (Fixes Vercel 404/MIME Errors) ---
+app.get('/style.css', (req, res) => {
+    res.setHeader('Content-Type', 'text/css');
+    res.sendFile(path.join(__dirname, 'style.css'));
+});
+app.get('/script.js', (req, res) => {
+    res.setHeader('Content-Type', 'application/javascript');
+    res.sendFile(path.join(__dirname, 'script.js'));
+});
+app.get('/questions.js', (req, res) => {
+    res.setHeader('Content-Type', 'application/javascript');
+    res.sendFile(path.join(__dirname, 'questions.js'));
+});
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
