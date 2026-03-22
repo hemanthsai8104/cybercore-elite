@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "api/index.js", "use": "@vercel/node" },
-    { "src": "api/ml.py", "use": "@vercel/python" }
-  ],
-  "routes": [
-    { "src": "/api/ml\\.py", "dest": "/api/ml.py" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/api/index.js" }
+  "rewrites": [
+    { "source": "/api/ml", "destination": "/api/ml.py" },
+    { "source": "/(register|login|quiz|vault|emails)/(.*)", "destination": "/api/index.js" },
+    { "source": "/(register|login|quiz|vault|emails)", "destination": "/api/index.js" }
   ]
 }
