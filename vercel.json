@@ -5,6 +5,8 @@
     { "src": "api/ml.py", "use": "@vercel/python" }
   ],
   "routes": [
+    { "src": "/api/ml\\.py", "dest": "/api/ml.py" },
+    { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/api/index.js" }
   ]
 }
