@@ -11,12 +11,13 @@
     }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/$1" },
+    { "src": "/api/ml\\.py", "dest": "/api/ml.py" },
     { "src": "/register", "dest": "/index.js" },
     { "src": "/login", "dest": "/index.js" },
     { "src": "/quiz/(.*)", "dest": "/index.js" },
     { "src": "/vault/(.*)", "dest": "/index.js" },
     { "src": "/spam/check", "dest": "/api/ml.py" },
-    { "src": "/emails/(.*)", "dest": "/index.js" }
+    { "src": "/emails/(.*)", "dest": "/index.js" },
+    { "src": "/(.*)", "dest": "/$1" }
   ]
 }
