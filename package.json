@@ -1,6 +1,6 @@
 {
   "name": "cybercore-elite",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Cybersecurity Dashboard",
   "main": "api/index.js",
   "scripts": {
