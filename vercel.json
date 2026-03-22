@@ -1,15 +1,13 @@
 {
   "version": 2,
   "rewrites": [
-    { "source": "/style.css", "destination": "/public/style.css" },
-    { "source": "/script.js", "destination": "/public/script.js" },
-    { "source": "/questions.js", "destination": "/public/questions.js" },
-    { "source": "/(.*)", "destination": "/public/index.html", "has": [{ "type": "header", "key": "accept", "value": ".*text/html.*" }] },
     { "source": "/api/(.*)", "destination": "/api/index.js" },
     { "source": "/register", "destination": "/api/index.js" },
     { "source": "/login", "destination": "/api/index.js" },
     { "source": "/quiz/(.*)", "destination": "/api/index.js" },
     { "source": "/vault/(.*)", "destination": "/api/index.js" },
-    { "source": "/spam/(.*)", "destination": "/api/index.js" }
+    { "source": "/spam/(.*)", "destination": "/api/index.js" },
+    { "source": "/", "destination": "/public/index.html" },
+    { "source": "/(.*)", "destination": "/public/$1" }
   ]
 }
