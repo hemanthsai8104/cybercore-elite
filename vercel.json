@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "rewrites": [
-    { "source": "/api/ml", "destination": "/api/ml.py" },
-    { "source": "/(register|login|quiz|vault|emails)/(.*)", "destination": "/api/index.js" },
-    { "source": "/(register|login|quiz|vault|emails)", "destination": "/api/index.js" }
+  "builds": [
+    { "src": "index.js", "use": "@vercel/node" },
+    { "src": "ml.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/(style\\.css|script\\.js|questions\\.js|.*\\.png|index\\.html)", "dest": "/$1" },
+    { "src": "/(.*)", "dest": "/index.js" }
   ]
 }
