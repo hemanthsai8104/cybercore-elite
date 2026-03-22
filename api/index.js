@@ -8,15 +8,15 @@ const Imap = require('imap');
 const { simpleParser } = require('mailparser');
 
 const app = express();
-const db = require('./database');
+const db = require('../database');
 const secret = process.env.JWT_SECRET || 'cyber_safe_key_88';
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
 // --- DYNAMIC INTELLIGENCE ENGINE ---
