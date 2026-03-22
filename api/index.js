@@ -13,23 +13,23 @@ const secret = process.env.JWT_SECRET || 'cyber_safe_key_88';
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // --- IMPERIAL ASSET BYPASS (Fixes Vercel 404/MIME Errors) ---
 app.get('/style.css', (req, res) => {
     res.setHeader('Content-Type', 'text/css');
-    res.sendFile(path.join(__dirname, 'style.css'));
+    res.sendFile(path.join(__dirname, '..', 'public', 'style.css'));
 });
 app.get('/script.js', (req, res) => {
     res.setHeader('Content-Type', 'application/javascript');
-    res.sendFile(path.join(__dirname, 'script.js'));
+    res.sendFile(path.join(__dirname, '..', 'public', 'script.js'));
 });
 app.get('/questions.js', (req, res) => {
     res.setHeader('Content-Type', 'application/javascript');
-    res.sendFile(path.join(__dirname, 'questions.js'));
+    res.sendFile(path.join(__dirname, '..', 'public', 'questions.js'));
 });
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
 // --- DYNAMIC INTELLIGENCE ENGINE ---
@@ -193,9 +193,4 @@ app.post('/emails/fetch', auth, (req, res) => {
 });
 
 // --- SERVER HUB ---
-app.listen(3000, () => {
-    console.log("------------------------------------------");
-    console.log("🛡️  Cyber Core Elite - Operational Hub");
-    console.log("🔗  Gateway Access: http://localhost:3000");
-    console.log("------------------------------------------");
-});
+module.exports = app;
