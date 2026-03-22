@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/ml.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/$1" },
+    { "src": "/register", "dest": "/index.js" },
+    { "src": "/login", "dest": "/index.js" },
+    { "src": "/quiz/(.*)", "dest": "/index.js" },
+    { "src": "/vault/(.*)", "dest": "/index.js" },
+    { "src": "/spam/check", "dest": "/api/ml.py" },
+    { "src": "/emails/(.*)", "dest": "/index.js" }
+  ]
+}
