@@ -8,7 +8,7 @@ const Imap = require('imap');
 const { simpleParser } = require('mailparser');
 
 const app = express();
-const db = require('./database');
+const db = require('../database');
 const secret = process.env.JWT_SECRET || 'cyber_safe_key_88';
 
 app.use(express.json());
