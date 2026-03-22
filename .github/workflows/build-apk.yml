@@ -13,18 +13,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup JDK
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-
-      - name: Build with WebView Wrapper
-        uses: cemcoe/web-to-apk-action@v1.1.0
+      - name: Build Android APK
+        uses: darkshredder/web-to-app-action@master
         with:
           app_name: "CyberScore Elite"
           app_url: "https://cybercore-elite.vercel.app"
-          icon_path: "public/logo512.png"
+          icon_url: "https://raw.githubusercontent.com/hemanthsai8104/cybercore-elite/main/public/logo512.png"
 
       - name: Upload APK as Artifact
         uses: actions/upload-artifact@v4
