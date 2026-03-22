@@ -13,22 +13,22 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup JDK
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
+          cache: gradle
 
-      - name: Build Android APK
-        uses: cemcoe/web-to-apk-action@v14
-        with:
-          app_name: "CyberScore Elite"
-          app_id: "com.cybercore.elite"
-          build_command: "echo 'Neural Build: Success'"
-          web_dir: "public"
+      - name: Build with Gradle
+        working-directory: ./android
+        run: |
+          # The Gradle command action will handle the build
+          # We'll use the build-level gradlew if it exists, or just use 'gradle'
+          gradle assembleDebug
 
       - name: Upload APK as Artifact
         uses: actions/upload-artifact@v4
         with:
           name: CyberScore-Elite-APK
-          path: ./*.apk
+          path: android/app/build/outputs/apk/debug/*.apk
